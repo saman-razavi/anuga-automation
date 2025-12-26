@@ -1,0 +1,19 @@
+# Large data and model outputs
+DATASTORE/
+*.nc
+*.tif
+*.asc
+*.grd
+*.hdf
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
