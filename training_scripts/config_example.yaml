@@ -1,0 +1,61 @@
+paths:
+  # root folder where you run the model (default: current working dir)
+  workshop_dir: .
+  data_dir: data
+  model_inputs_dir: model_inputs
+  model_outputs_dir: model_outputs
+  model_visuals_dir: visuals
+  model_validation_dir: validation
+
+runtime:
+  headless: true
+
+mesh:
+  # Option A: provide mesher triangle shapefile and extract pts/tris
+  triangle_shp: data/Terrain_Final.dem_rev1_USM.shp
+  dedup_tol: 1e-6
+  pts_npy: data/mesh_mti_shp_pts.npy
+  tris_npy: data/mesh_mti_shp_tris.npy
+  # CRS of the mesh coordinates (must match DEM CRS for sampling)
+  src_crs: "EPSG:3158"   # change to your mesh CRS
+
+dem:
+  tif: data/Terrain_Resample.tif
+  background_tif: data/Landsat_B6.tif
+  edited_asc: data/Terrain_Resample_edited.asc
+  nodata_out: -9999.0
+  mask_below_elev: 0.0
+  plot_dem_png: true
+  plot_dem_meshed_png: true
+
+boundaries:
+  us_line_shp: data/ShMouth_US_BC.shp
+  ds_line_shp: data/StLaz_DS_Boundary.shp
+  mesh_epsg_for_tagging: 26914  # only used for line reprojection in tagging
+  base_tol_m: 20.0
+
+gauges:
+  discharge_csv: model_inputs/Discharge_at_DAM_clean.csv
+  level_csv: model_inputs/Level_at_StLazare_clean.csv
+  discharge_transect_shp: data/ShMouth_US_BC.shp
+  # If you still keep raw downloaded files with timezone offsets,
+  # do the cleaning once yourself and point to *_clean.csv here.
+
+model:
+  domain_name: Shellmouth_flood
+  friction: 0.03
+  flow_algorithm: DE1
+  low_froude: 1
+  minimum_allowed_height: 0.1
+
+simulation:
+  # Provide absolute timestamps (UTC). These are used for:
+  #  - printing timestamps during evolve
+  #  - boundary time-series interpolation (hydrograph / tide gauge)
+  starttime_utc: "2014-07-02 00:00:00"
+  endtime_utc: "2014-07-14 00:00:00"
+  spinup_endtime_utc: "2014-07-03 00:00:00"
+  timestep_sec: 300 
+  yieldstep_sec: 86400
+  # outputstep defaults to timestep_sec if omitted
+  outputstep_sec: 86400
