@@ -12,7 +12,7 @@ runtime:
 
 mesh:
   # Option A: provide mesher triangle shapefile and extract pts/tris
-  triangle_shp: data/Terrain_Final.dem_rev1_USM.shp
+  triangle_shp: data/DEM_MTI_PART_USM.shp
   dedup_tol: 1e-6
   pts_npy: data/mesh_mti_shp_pts.npy
   tris_npy: data/mesh_mti_shp_tris.npy
@@ -20,9 +20,8 @@ mesh:
   src_crs: "EPSG:3158"   # change to your mesh CRS
 
 dem:
-  tif: data/Terrain_Resample.tif
-  background_tif: data/Landsat_B6.tif
-  edited_asc: data/Terrain_Resample_edited.asc
+  tif: data/DEM_MTI_PART.tif
+  edited_asc: data/DEM_MTI_PART_edited.asc
   nodata_out: -9999.0
   mask_below_elev: 0.0
   plot_dem_png: true

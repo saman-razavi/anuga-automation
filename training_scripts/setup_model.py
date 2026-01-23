@@ -96,7 +96,6 @@ for d in [data_dir, model_inputs_dir, model_outputs_dir, model_visuals_dir, mode
 # DEM + background from config
 # --------------------------
 f_DEM_tif = R(CFG["dem"]["tif"])
-f_bg_img_tif = R(CFG["dem"]["background_tif"])
 
 DEM_src = rio.open(f_DEM_tif)
 DEM = DEM_src.read(1)
@@ -104,11 +103,6 @@ resolution = DEM_src.res[0]
 
 extent = [DEM_src.bounds.left, DEM_src.bounds.right,
           DEM_src.bounds.bottom, DEM_src.bounds.top]
-
-bg_img_src = rio.open(f_bg_img_tif)
-bg_img = np.stack([bg_img_src.read(i) for i in range(1, bg_img_src.count + 1)], axis=2) #if more than one bands are present create RGB
-bg_img_extent = [bg_img_src.bounds.left, bg_img_src.bounds.right,
-                 bg_img_src.bounds.bottom, bg_img_src.bounds.top]
 
 # DEM nodata and elevations < 0 automatically masked
 DEM = DEM_src.read(1, masked=True).astype("float32")
@@ -119,7 +113,6 @@ cmap = cmocean.cm.topo.copy()
 cmap.set_bad(alpha=0.0)
 
 fig, ax = plt.subplots(1, 1, figsize=(8, 4), dpi=200)
-ax.imshow(bg_img, extent=bg_img_extent)
 im1 = ax.imshow(DEM, cmap=cmap, extent=extent)
 plt.colorbar(im1)
 ax.set_title("DEM (nodata masked)")
