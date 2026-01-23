@@ -17,7 +17,7 @@ Please ensure that all the following datasets were downloaded and placed into th
 
 ## DEM.tif, river_Centerline.shp, upstream_boundary_line.shp and downstream_boundary_line.shp
 
-1) Mesher.py contains python script to be used in a conda environment where mesher is pre-installed.
+1) Mesher.ipynb contains python script to be used in a conda environment where mesher is pre-installed.(run Mesher.ipynb in jupyter notebook for generating random noise raster around river buffer and subsequently to generate triangular UnStructuredMesh)
 
 It can be used with the DEM.tif and any constraint file such as riverline, flow accumulation, random noise raster etc.
 This code will generate an unstructured mesh file name *_USM.shp in the folder specified in the code. After the *_USM.shp is generated, copy the .shp and supporting files into "data" directory 
