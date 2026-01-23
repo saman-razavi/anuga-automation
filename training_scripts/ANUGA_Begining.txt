@@ -1,14 +1,14 @@
-# Anuga Hydrodynamic Modeling: Hands On Exercises for flood inundation modeling
+# ANUGA Hydrodynamic Modeling: Hands On Exercises for flood inundation modeling
 
 # Author information:
 Trushnamayee Nanda
 
 ### Notebook Series Description:
 The series of three notebooks show usage of a unstructured mesh generation, model&mesh setup and run model, respectively.  
-### 1) Mesher.py
+### 1) Mesher.ipynb
 ### 2) Setup_model.py #
 ### 3) Run_model.py
-Note: config_exmpe.yaml file contains all hardcoded parameters defined
+Note: config_exmpe.yaml file contains all hardcoded parameters defined in it
 
 
 #Necessary Datasets:
@@ -45,7 +45,7 @@ Post-processing
 ###use of anuga_output_analysis.py for getting animation for .sww file
   python anuga_output_analysis.py --sww 20140702000000_Shellmouth_flood_12_days.sww --make-video depth --fps 20 --clim-depth 0,10
 
-###use of export_depth_wse_velocity.py for generating .tif raster for inundation depth, wse, velocity 
-   
+###use of export_depth_wse_velocity.py for generating .tif raster for inundation depth, wse, velocity eg., extract results for 09-07-2014 00UTC
+   python export_depth_wse_velocity.py --sww 20140702000000_Shellmouth_flood_12_days.sww --dem-mask "./data/DEM_MTI_PART.tif" --outdir ./exports_inundation --start "2014-07-02 00:00:00"--dates "2014-07-09 00:00:00" --res 1 --epsg 26914 --depth-min 0.3
    
 
