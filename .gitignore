@@ -16,4 +16,4 @@ __pycache__/
 
 # OS
 .DS_Store
-Thumbs.db
+Thumbs.db*:Zone.Identifier
