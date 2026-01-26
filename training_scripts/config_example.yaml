@@ -36,7 +36,7 @@ boundaries:
 gauges:
   discharge_csv: model_inputs/Discharge_at_DAM_clean.csv #Upstream input
   level_csv: model_inputs/Level_at_Russel_clean.csv #Downstream level unless transmissive
-  discharge_transect_shp: data/US_Bondary.shp
+  discharge_transect_shp: data/US_Boundary.shp
   # If you still keep raw downloaded files with timezone offsets,
   # do the cleaning once yourself and point to *_clean.csv here.
 
